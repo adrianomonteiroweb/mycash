@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  db:
+    image: ${DOCKER_IMAGE}
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ${DB_DATA}
+        # copy the sql script to create tables
+      - ${CREATE_TABLES}
+        # copy the sql script to fill tables
+      - ${FILL_TABLES}
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
