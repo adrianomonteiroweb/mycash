@@ -2,14 +2,14 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/database';
 
 class Account extends Model {
-  id!: number;
+  id!: string;
   balance!: number;
 }
 
 export default Account.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,

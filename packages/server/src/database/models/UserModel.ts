@@ -3,16 +3,16 @@ import { sequelize } from '../config/database';
 import AccountModel from './AccountModel';
 
 class User extends Model {
-  id!: number;
+  id!: string;
   username!: string;
   password!: string;
-  accountId!: number;
+  accountId!: string;
 }
 
 User.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
@@ -27,7 +27,7 @@ User.init(
       allowNull: false,
     },
     accountId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       field: 'account_id',
       unique: true,
