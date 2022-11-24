@@ -1,19 +1,21 @@
+const { v4 } = require('uuid');
+
 module.exports = {
   up: async (queryInterface, _Sequelize) => {
     await queryInterface.bulkInsert(
       'users',
       [
         {
-          id: 1,
+          id: v4(),
           username: 'adriano1',
           password: 'adriano1',
-          account_id: 1,
+          account_id: v4(),
         },
         {
-          id: 2,
+          id: v4(),
           username: 'adriano2',
           password: 'adriano2',
-          account_id: 2,
+          account_id: v4(),
         },
       ],
       { timestamps: false }

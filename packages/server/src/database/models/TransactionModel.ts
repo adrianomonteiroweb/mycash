@@ -3,27 +3,27 @@ import { sequelize } from '../config/database';
 import AccountModel from './AccountModel';
 
 class Transaction extends Model {
-  id!: number;
-  username!: string;
-  password!: string;
-  accountId!: number;
+  id!: string;
+  debitedAccountId!: string;
+  creditedAccountId!: string;
+  value!: number;
 }
 
 Transaction.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
     debitedAccountId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       field: 'debited_account_id',
     },
     creditedAccountId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       field: 'credited_account_id',
     },

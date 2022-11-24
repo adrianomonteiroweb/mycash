@@ -5,18 +5,17 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('transactions', {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.UUID,
         primaryKey: true,
         allowNull: false,
       },
       debitedAccountId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         field: 'debited_account_id',
       },
       creditedAccountId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         field: 'credited_account_id',
       },
