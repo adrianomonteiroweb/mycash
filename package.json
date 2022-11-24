@@ -5,6 +5,9 @@
   "author": "Adriano Monteiro <adrianomonteiroweb@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev": "yarn workspace @mycash/server start"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
