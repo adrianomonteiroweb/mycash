@@ -6,7 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "yarn workspace @mycash/server start"
+    "dev": "yarn workspace @mycash/server dev",
+    "test": "yarn workspace @mycash/server test",
+    "db:drop": "yarn workspace @mycash/server db:drop",
+    "db:create": "yarn workspace @mycash/server db:create",
+    "db:migrate": "yarn workspace @mycash/server db:migrate"
   },
   "workspaces": {
     "packages": [

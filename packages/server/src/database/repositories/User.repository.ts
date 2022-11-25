@@ -8,4 +8,10 @@ export class UseRepository {
 
     return allUsers;
   }
+
+  createUsersRepository(user: any) {
+    const userCreated = this._userModel.create(user);
+
+    return userCreated;
+  }
 }
