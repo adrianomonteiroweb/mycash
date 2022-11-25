@@ -14,8 +14,8 @@ User.init(
     id: {
       type: DataTypes.UUID,
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
+      unique: true,
     },
     username: {
       type: DataTypes.STRING(50),
@@ -40,7 +40,7 @@ User.init(
   }
 );
 
-User.hasOne(AccountModel, { foreignKey: 'accountId', as: 'account' });
-AccountModel.belongsTo(User, { foreignKey: 'accountId', as: 'user' });
+User.belongsTo(AccountModel, { foreignKey: 'accountId', as: 'account' });
+AccountModel.hasOne(User, { foreignKey: 'accountId', as: 'user' });
 
 export default User;

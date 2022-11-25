@@ -13,9 +13,9 @@ Transaction.init(
   {
     id: {
       type: DataTypes.UUID,
-      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
+      unique: true,
     },
     debitedAccountId: {
       type: DataTypes.UUID,

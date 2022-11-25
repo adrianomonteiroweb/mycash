@@ -11,8 +11,8 @@ export default Account.init(
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false,
+      unique: true,
     },
     balance: {
       type: DataTypes.NUMBER,
