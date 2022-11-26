@@ -6,6 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "start": "yarn workspace @mycash/server start",
+    "build": "yarn workspace @mycash/server build",
     "dev": "yarn workspace @mycash/server dev",
     "test": "yarn workspace @mycash/server test",
     "db:drop": "yarn workspace @mycash/server db:drop",

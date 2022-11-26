@@ -1,3 +1,5 @@
+import checkSchema from '../../utils/functions/checkSchema';
+import { userSchema } from '../../utils/joiSchemas';
 import { ICreateUser } from '../interfaces';
 import { UseRepository } from './../repositories/User.repository';
 import { AccountService } from './Account.service';
@@ -15,6 +17,8 @@ export class UserService {
   }
 
   async createUsersService(user: ICreateUser) {
+    if (checkSchema(user, userSchema)) return checkSchema(user, userSchema);
+
     const accountCreated = await this._accountService.createUsersService();
 
     const userCreated = await this._useRepository.createUsersRepository({
