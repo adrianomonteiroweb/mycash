@@ -1,4 +1,10 @@
 import { Request, Response } from 'express';
+
+import {
+  CREATED,
+  INTERNAL_SERVER_ERROR,
+} from '../../utils/functions/httpStatusFunction';
+import messageErros from '../../utils/messageErros';
 import { UserService } from '../services/User.Service';
 
 export class UserController {
@@ -11,13 +17,21 @@ export class UserController {
   }
 
   async createUsersController(req: Request, res: Response): Promise<Response> {
-    const userCreated = await this._service.createUsersService(req.body);
+    let userCreated: any;
 
-    return userCreated.dataValues
-      ? res.status(201).json({ message: 'User created successfully.' })
-      : res.status(400).json({
-          message:
-            'TUnable to create a user. Probable field with wrong or blank value.',
+    try {
+      userCreated = await this._service.createUsersService(req.body);
+    } catch (error: any) {
+      return res
+        .status(INTERNAL_SERVER_ERROR)
+        .json({ message: messageErros.internalServerError });
+    }
+    console.log(userCreated);
+
+    return userCreated !== undefined && !userCreated.status
+      ? res.status(CREATED).json({ message: 'User created successfully.' })
+      : res.status(userCreated.status).json({
+          message: userCreated.message,
         });
   }
 }
