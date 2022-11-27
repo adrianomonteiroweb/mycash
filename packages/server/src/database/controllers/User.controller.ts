@@ -26,8 +26,6 @@ export class UserController {
         .status(INTERNAL_SERVER_ERROR)
         .json({ message: messageErros.internalServerError });
     }
-    console.log(userCreated);
-
     return userCreated !== undefined && !userCreated.status
       ? res.status(CREATED).json({ message: 'User created successfully.' })
       : res.status(userCreated.status).json({

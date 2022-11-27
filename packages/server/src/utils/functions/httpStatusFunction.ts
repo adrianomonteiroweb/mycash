@@ -8,4 +8,5 @@ export const {
   UNAUTHORIZED,
   CONFLICT,
   NOT_FOUND,
+  NOT_IMPLEMENTED,
 } = StatusCodes;
