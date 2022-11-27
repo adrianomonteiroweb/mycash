@@ -1,14 +1,12 @@
 import { AccountRepository } from '../repositories/Account.repository';
 
-const { v4 } = require('uuid');
-
 export class AccountService {
   private readonly _accountRepository = new AccountRepository();
 
-  async createUsersService() {
+  async createUsersService(accountId: string) {
     const accountCreated =
       await this._accountRepository.createAccountsRepository({
-        id: v4(),
+        id: accountId,
         balance: 100,
       });
 

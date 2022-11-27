@@ -6,7 +6,7 @@ class Account extends Model {
   balance!: number;
 }
 
-export default Account.init(
+Account.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -25,3 +25,5 @@ export default Account.init(
     timestamps: false,
   }
 );
+
+export default Account;

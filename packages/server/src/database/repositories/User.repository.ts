@@ -1,16 +1,24 @@
 import UserModel from '../models/UserModel';
 
-export class UseRepository {
+export class UserRepository {
   private readonly _userModel = UserModel;
 
-  getAllUsersRepository() {
-    const allUsers = this._userModel.findAll();
+  async getAllUsersRepository() {
+    const allUsers = await this._userModel.findAll();
 
     return allUsers;
   }
 
-  createUsersRepository(user: any) {
-    const userCreated = this._userModel.create(user);
+  async getUserByUsername(username: string) {
+    const userByUsername = await this._userModel.findOne({
+      where: { username },
+    });
+
+    return userByUsername;
+  }
+
+  async createUsersRepository(user: any) {
+    const userCreated = await this._userModel.create(user);
 
     return userCreated;
   }
