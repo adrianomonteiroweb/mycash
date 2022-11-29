@@ -1,8 +1,23 @@
-version: '3.2'
+version: '3'
 services:
+  server:
+    container_name: server
+    build: .
+    command: yarn install
+    restart: always
+    ports:
+      - 3333:3333
+    environment:
+      - HOST=localhost
+      - PORT=3333
+      - NODE_ENV=test
+      - DEPLOY_URL=https://mycash.com.br
+    volumes:
+      - .:/usr/app
+
   db:
-    image: ${DOCKER_IMAGE}
-    container_name: ${CONTAINER_NAME}
+    image: ${DOCKER_IMAGE_DB}
+    container_name: ${CONTAINER_NAME_DB}
     restart: always
     ports:
       - ${DB_PORT}:5432
